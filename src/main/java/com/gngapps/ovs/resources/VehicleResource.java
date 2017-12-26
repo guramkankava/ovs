@@ -16,7 +16,7 @@ import com.gngapps.ovs.resources.model.response.VehicleResponseModel;
 public class VehicleResource {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/filtered")
-	public List<VehicleResponseModel> getByFilter(VehicleRequestModel vehicleFilter) {
+	public List<VehicleResponseModel> getByFilter(VehicleRequestModel vehicleRequestModel) {
 		return Collections.emptyList();
 	}
 	
