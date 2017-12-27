@@ -4,10 +4,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gngapps.ovs.resources.exception.VehicleNotFoundException;
 import com.gngapps.ovs.resources.model.request.VehicleRequestModel;
 import com.gngapps.ovs.resources.model.response.VehicleResponseModel;
 
@@ -16,17 +20,17 @@ import com.gngapps.ovs.resources.model.response.VehicleResponseModel;
 public class VehicleResource {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/filtered")
-	public List<VehicleResponseModel> getByFilter(VehicleRequestModel vehicleRequestModel) {
-		return Collections.emptyList();
+	public ResponseEntity<List<VehicleResponseModel>> getByFilter(RequestEntity<VehicleRequestModel> requestEntity) throws VehicleNotFoundException {
+		return new ResponseEntity<>(Collections.emptyList(), HttpStatus.ACCEPTED);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/recent")
-	public List<VehicleResponseModel> getRecent() {
-		return Collections.emptyList(); 
+	public ResponseEntity<List<VehicleResponseModel>> getRecent() {
+		return new ResponseEntity<>(Collections.emptyList(), HttpStatus.ACCEPTED);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/sum")
-	public Map<String, Integer> getBrandsAndAmount() {
-		return Collections.emptyMap();
+	public ResponseEntity<Map<String, Integer>> getBrandsAndAmount() {
+		return new ResponseEntity<Map<String,Integer>>(Collections.emptyMap(), HttpStatus.OK);
 	}
 }
