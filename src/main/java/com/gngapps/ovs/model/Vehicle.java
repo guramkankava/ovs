@@ -1,6 +1,9 @@
-package com.gngapps.ovs.resources.model.request;
+package com.gngapps.ovs.model;
 
-import com.gngapps.ovs.model.filters.VehicleFilter;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,9 +16,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class VehicleRequestModel implements VehicleFilter {
+@Entity
+public class Vehicle {
+	@Id
+	private long id;
 	private String energySource;
 	private String manufacturer;
 	private String model;
 	private String price;
+	private Date publishDate;
 }
