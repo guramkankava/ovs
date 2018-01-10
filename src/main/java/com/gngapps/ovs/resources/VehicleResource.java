@@ -31,20 +31,16 @@ public class VehicleResource {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/filtered")	 	
 	public ResponseEntity<List<VehicleResponseModel>> getByFilter(@RequestParam(value="energySource", required=false) String energySource, 
-			@RequestParam(value="manufacturer", required=false) String manufacturer, 
-			@RequestParam(value="model", required=false) String model, 
+			@RequestParam(value="manufacturer", required=false) String manufacturer, @RequestParam(value="model", required=false) String model, 
 			@RequestParam(value="price", required=false) String price) throws VehicleNotFoundException, BadRequestException {
-		
 		List<VehicleResponseModel> vehicleResponseModelList = new ArrayList<>();
-		
 		vehicleService.getFiltered(energySource, manufacturer, model, price).forEach( (vehicle) -> {
 			vehicleResponseModelList.add(new VehicleResponseModel.Builder().
 					setEnergySource(vehicle.getEnergySource()).
 					setManufacturer(vehicle.getManufacturer()).
 					setModel(vehicle.getModel()).
 					setPrice(vehicle.getPrice()).
-					build());
-		});
+					build());});
 		return new ResponseEntity<>(vehicleResponseModelList, HttpStatus.ACCEPTED);
 	}
 	

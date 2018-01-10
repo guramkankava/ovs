@@ -1,7 +1,5 @@
 package com.gngapps.ovs.resources.model.request;
 
-import com.gngapps.ovs.model.filters.VehicleFilter;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class VehicleRequestModel implements VehicleFilter {
+public class VehicleRequestModel {
 	private String energySource;
 	private String manufacturer;
 	private String model;

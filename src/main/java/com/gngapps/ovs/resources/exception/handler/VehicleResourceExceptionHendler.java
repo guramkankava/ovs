@@ -14,18 +14,18 @@ import com.gngapps.ovs.resources.model.response.ApiErrorResponseModel;
 public class VehicleResourceExceptionHendler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler({VehicleNotFoundException.class})
-	public ResponseEntity<?> handleException(Exception ex) {
+	public ResponseEntity<ApiErrorResponseModel> handleVehicleNotFoundException(Exception ex) {
 		ApiErrorResponseModel aerm = new ApiErrorResponseModel();
 		if(ex.getClass().getSimpleName().equals("VehicleNotFoundException")) {
 			aerm.setStatusCode(HttpStatus.NOT_FOUND);
 			aerm.setErrorMessage(ex.getMessage());
-			return new ResponseEntity<Object>(aerm, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<ApiErrorResponseModel>(aerm, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<ApiErrorResponseModel>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@ExceptionHandler({BadRequestException.class})
-	public ResponseEntity<?> handleRuntimeException(RuntimeException ex) {
+	public ResponseEntity<?> handleBadRequestException(Exception ex) {
 		ApiErrorResponseModel aerm = new ApiErrorResponseModel();
 		if(ex.getClass().getSimpleName().equals("BadRequestException")) {
 			aerm.setStatusCode(HttpStatus.BAD_REQUEST);

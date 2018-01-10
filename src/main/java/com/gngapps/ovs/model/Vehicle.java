@@ -1,9 +1,8 @@
 package com.gngapps.ovs.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +23,4 @@ public class Vehicle {
 	private String manufacturer;
 	private String model;
 	private String price;
-	private Date publishDate;
 }
